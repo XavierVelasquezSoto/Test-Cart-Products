@@ -3,7 +3,7 @@ import { COLORS } from '../../styles/colors';
 
 const StyledButtonFilters = styled.button`
 	color: ${props => {
-		if (props.$isActive) {
+		if (props.$active) {
 			return COLORS.whiteButtonSelect;
 		} else {
 			return COLORS.redDark;
@@ -13,7 +13,7 @@ const StyledButtonFilters = styled.button`
 	height: 34px;
 	width: 76px;
 	background-color: ${props => {
-		if (props.$isActive) {
+		if (props.$active) {
 			return COLORS.red;
 		} else {
 			return COLORS.bgWhite;

@@ -1,5 +1,5 @@
 import { PRODUCTS } from '../../constants/infoProducts';
-import ObjectProducts from './object-products/Object-Products';
+import ObjectProducts from '../object-product/Object-Products';
 
 const PrintProducts = () => {
 	return (
@@ -8,8 +8,13 @@ const PrintProducts = () => {
 				return (
 					<ObjectProducts
 						key={infoProduct.id}
-						images={infoProduct.images.mobile}
-					></ObjectProducts>
+						imgMobile={infoProduct.images.mobile}
+						imgTablet={infoProduct.images.tablet}
+						imgDesktop={infoProduct.images.desktop}
+						product={infoProduct.product}
+						descriptionProduct={infoProduct.descriptionProduct}
+						price={infoProduct.price}
+					/>
 				);
 			})}
 		</>
