@@ -22,6 +22,7 @@ const ObjectProducts = ({
 				<source media='(min-width: 360px)' srcSet={imgMobile} />
 				<StyledImg media={imgMobile} alt='' />
 			</picture>
+			<button>Add to cart</button>
 			<StyledProduct>{product}</StyledProduct>
 			<StyledDescriptionProduct>{descriptionProduct}</StyledDescriptionProduct>
 			<StyledPrice>${price}</StyledPrice>
