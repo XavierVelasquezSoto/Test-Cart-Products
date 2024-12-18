@@ -1,10 +1,10 @@
-import { PRODUCTS } from '../../constants/infoProducts';
 import ObjectProducts from '../object-product/Object-Products';
 
-const PrintProducts = () => {
+const PrintProducts = ({ filterProducts }) => {
+	// console.log(filterProducts);
 	return (
 		<>
-			{PRODUCTS.map(infoProduct => {
+			{filterProducts.map(infoProduct => {
 				return (
 					<ObjectProducts
 						key={infoProduct.id}

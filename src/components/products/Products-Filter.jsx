@@ -1,12 +1,14 @@
 import { useState } from 'react';
 import { StyledButtonFilters } from './products-filter.styles';
 
-const ProductsFilter = () => {
+const ProductsFilter = ({ buttonFilter }) => {
 	const [activeButton, setActiveButton] = useState('Default');
 
-	const buttonClick = buttonName => {
-		setActiveButton(buttonName);
+	const buttonClick = sortButton => {
+		setActiveButton(sortButton);
+		buttonFilter(sortButton);
 	};
+	// console.log(setActiveButton);
 
 	return (
 		<>

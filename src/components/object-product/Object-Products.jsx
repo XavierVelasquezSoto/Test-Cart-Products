@@ -1,7 +1,9 @@
 import {
 	StyledDivProduct,
 	StyledImg,
-	StyledText
+	StyledProduct,
+	StyledDescriptionProduct,
+	StyledPrice
 } from './object-products.styles';
 
 const ObjectProducts = ({
@@ -18,11 +20,11 @@ const ObjectProducts = ({
 				<source media='(min-width: 1024px)' srcSet={imgDesktop} />
 				<source media='(min-width: 768px)' srcSet={imgTablet} />
 				<source media='(min-width: 360px)' srcSet={imgMobile} />
-				<StyledImg alt='' />
+				<StyledImg media={imgMobile} alt='' />
 			</picture>
-			<StyledText>{product}</StyledText>
-			<p>{descriptionProduct}</p>
-			<p>{price}</p>
+			<StyledProduct>{product}</StyledProduct>
+			<StyledDescriptionProduct>{descriptionProduct}</StyledDescriptionProduct>
+			<StyledPrice>${price}</StyledPrice>
 		</StyledDivProduct>
 	);
 };

@@ -23,5 +23,8 @@ export const GlobalStyles = createGlobalStyle`
         text-decoration: none;
         color: inherit;
     }
+    body{
+        font-family: "Red Hat Text", sans-serif;
+    }
 
 `;
