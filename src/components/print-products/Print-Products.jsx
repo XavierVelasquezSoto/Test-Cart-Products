@@ -1,9 +1,10 @@
 import ObjectProducts from '../object-product/Object-Products';
+import { StyledGrid } from './print-product.styles';
 
 const PrintProducts = ({ filterProducts }) => {
 	// console.log(filterProducts);
 	return (
-		<>
+		<StyledGrid>
 			{filterProducts.map(infoProduct => {
 				return (
 					<ObjectProducts
@@ -17,7 +18,7 @@ const PrintProducts = ({ filterProducts }) => {
 					/>
 				);
 			})}
-		</>
+		</StyledGrid>
 	);
 };
 

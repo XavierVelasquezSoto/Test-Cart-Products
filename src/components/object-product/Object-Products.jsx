@@ -1,6 +1,11 @@
+import { useState } from 'react';
 import {
 	StyledDivProduct,
 	StyledImg,
+	StyledAddToCart,
+	StyledImgDecrement,
+	StyledImgIncrement,
+	StyledAddMoreProducts,
 	StyledProduct,
 	StyledDescriptionProduct,
 	StyledPrice
@@ -14,6 +19,9 @@ const ObjectProducts = ({
 	descriptionProduct,
 	price
 }) => {
+	const [active, setActive] = useState(false);
+	const [quantityProducts, setQuantityProducts] = useState([]);
+
 	return (
 		<StyledDivProduct>
 			<picture>
@@ -22,10 +30,29 @@ const ObjectProducts = ({
 				<source media='(min-width: 360px)' srcSet={imgMobile} />
 				<StyledImg media={imgMobile} alt='' />
 			</picture>
-			<button>Add to cart</button>
+
+			{!active && (
+				<StyledAddToCart onClick={() => setActive(!active)}>
+					Add to cart
+				</StyledAddToCart>
+			)}
+
+			{active && (
+				<>
+					<StyledAddMoreProducts>
+						<StyledImgDecrement
+							src='/assets/images/icon-decrement-quantity.svg'
+							onClick={setQuantityProducts => {}}
+						/>
+						1
+						<StyledImgIncrement src='/assets/images/icon-increment-quantity.svg' />
+					</StyledAddMoreProducts>
+				</>
+			)}
+
 			<StyledProduct>{product}</StyledProduct>
 			<StyledDescriptionProduct>{descriptionProduct}</StyledDescriptionProduct>
-			<StyledPrice>${price}</StyledPrice>
+			<StyledPrice>${price.toFixed(2)}</StyledPrice>
 		</StyledDivProduct>
 	);
 };

@@ -11,8 +11,11 @@ const App = () => {
 	// console.log(userAccount);
 
 	const [filterProducts, setFilterProducts] = useState('');
+	const [filterCart, setFilterCart] = useState([]);
 
 	const selectProducts = sortProducts(PRODUCTS, filterProducts);
+
+	// const addProduct = addToCart(PRODUCTS, filterCart);
 
 	return (
 		<div>
@@ -27,14 +30,16 @@ const App = () => {
 			<main>
 				<StyledCardFlex>
 					<PrintProducts filterProducts={selectProducts} />
-					<StyledYourCart>Your Cart (0)</StyledYourCart>
-					<div>
-						<img
-							src='public/assets/images/illustration-empty-cart.svg'
-							alt=''
-						/>
-						<p>Your added items will appear here</p>
-					</div>
+					<StyledYourCart>
+						Your Cart (0)
+						<div>
+							<img
+								src='public/assets/images/illustration-empty-cart.svg'
+								alt=''
+							/>
+							<p>Your added items will appear here</p>
+						</div>
+					</StyledYourCart>
 				</StyledCardFlex>
 			</main>
 		</div>
@@ -55,4 +60,8 @@ const sortProducts = (product, searchProduct) => {
 		return 0;
 	});
 	return sortCartProducts;
+};
+
+const addToCart = (product, price) => {
+	cartContainer.push({ name: product, price: price, quantity: 1 });
 };
