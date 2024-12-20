@@ -36,25 +36,29 @@ const StyledModalTextConfirmed = styled.p`
 `;
 
 const StyledModalFlex = styled.div`
-	display: flex;
-	align-items: center;
 	margin: 32px 0;
 	padding: 0 24px;
 	background-color: #fcf8f6;
+`;
+
+const StyledPadding = styled.div`
+	display: flex;
+	align-items: center;
 `;
 
 const StyledModalImg = styled.img`
 	height: 48px;
 `;
 
-const StyledPadding = styled.div`
-	padding-left: 16px;
+const StyledModalMargin = styled.div`
+	margin-left: 16px;
 `;
 
 const StyledModalP = styled.p`
 	font-size: ${FONTS.fontSizeS};
 	font-weight: ${FONTS.fontSemiBold};
 	color: ${COLORS.redDark};
+	margin: 0;
 `;
 
 const StyledModalSpan1 = styled.span`
@@ -84,13 +88,14 @@ const StyledModalButton = styled.button`
 	background-color: ${COLORS.red};
 	font-size: ${FONTS.fontSizeM};
 	font-weight: ${FONTS.fontSemiBold};
+	cursor: pointer;
 `;
 //
 
 const StyledModalOrderTotalDiv = styled.div`
 	display: flex;
 	justify-content: space-between;
-	padding: 0 24px;
+	padding: 0 24px 56px;
 `;
 const StyledModalOrderTotal1 = styled.span`
 	color: ${COLORS.redDark};
@@ -109,8 +114,9 @@ export {
 	StyledModalTitle,
 	StyledModalTextConfirmed,
 	StyledModalFlex,
-	StyledModalImg,
 	StyledPadding,
+	StyledModalImg,
+	StyledModalMargin,
 	StyledModalP,
 	StyledModalSpan1,
 	StyledModalSpan2,
