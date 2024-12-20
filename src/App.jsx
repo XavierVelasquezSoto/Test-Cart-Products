@@ -113,10 +113,10 @@ const App = () => {
 										alt=''
 									/>
 									<StyledOrderSpan>
-										This is a
+										This is a{' '}
 										<StyledOrderSpanNeutral>
 											carbon-neutral
-										</StyledOrderSpanNeutral>
+										</StyledOrderSpanNeutral>{' '}
 										delivery
 									</StyledOrderSpan>
 								</StyledOrderDiv>
