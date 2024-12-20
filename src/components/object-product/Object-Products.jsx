@@ -11,50 +11,143 @@ import {
 	StyledPrice
 } from './object-products.styles';
 
-const ObjectProducts = ({
-	imgMobile,
-	imgTablet,
-	imgDesktop,
-	product,
-	descriptionProduct,
-	price
-}) => {
-	const [active, setActive] = useState(false);
-	const [quantityProducts, setQuantityProducts] = useState([]);
+const ObjectProducts = ({ product, cart, setCart, removeProduct }) => {
+	// const [active, setActive] = useState(false);
 
+	const findProduct = cart.find(itemProduct => itemProduct.id === product.id);
+	// console.log('product', findProduct);
+
+	const addToCart = (product, cart, setCart) => {
+		// console.log(product.name);
+		const infoProductCart = { ...product, quantity: 1 };
+		setCart([...cart, infoProductCart]);
+	};
+
+	const incrementProduct = (product, cart, setCart) => {
+		const positiveProduct = cart.find(
+			checkProduct => product.id === checkProduct.id
+		);
+		positiveProduct.quantity++;
+		setCart([...cart]);
+		// console.log('remove items', `${positiveProduct.quantity}`);
+		// console.log('remove items', `${negativeProduct.price}`);
+	};
+
+	const decrementProduct = (product, cart, setCart) => {
+		const negativeProduct = cart.find(
+			checkProduct => product.id === checkProduct.id
+		);
+		negativeProduct.quantity--;
+		if (negativeProduct.quantity === 0) {
+			removeProduct(product, cart, setCart);
+			// console.log('remove items', `${negativeProduct.quantity}`);
+			// console.log('remove items', `${negativeProduct.price}`);
+		} else {
+			setCart([...cart]);
+		}
+	};
 	return (
 		<StyledDivProduct>
 			<picture>
-				<source media='(min-width: 1024px)' srcSet={imgDesktop} />
-				<source media='(min-width: 768px)' srcSet={imgTablet} />
-				<source media='(min-width: 360px)' srcSet={imgMobile} />
-				<StyledImg media={imgMobile} alt='' />
+				<source media='(min-width: 1024px)' srcSet={product.images.desktop} />
+				<source media='(min-width: 768px)' srcSet={product.images.tablet} />
+				<source media='(min-width: 360px)' srcSet={product.images.mobile} />
+				<StyledImg src={product.images.mobile} alt='' />
 			</picture>
 
-			{!active && (
-				<StyledAddToCart onClick={() => setActive(!active)}>
+			{!findProduct && (
+				<StyledAddToCart
+					onClick={() => {
+						addToCart(product, cart, setCart);
+					}}
+				>
 					Add to cart
 				</StyledAddToCart>
 			)}
 
-			{active && (
+			{findProduct && (
 				<>
 					<StyledAddMoreProducts>
 						<StyledImgDecrement
 							src='/assets/images/icon-decrement-quantity.svg'
-							onClick={setQuantityProducts => {}}
+							onClick={() => {
+								decrementProduct(product, cart, setCart);
+							}}
 						/>
-						1
-						<StyledImgIncrement src='/assets/images/icon-increment-quantity.svg' />
+						{findProduct.quantity}
+						<StyledImgIncrement
+							src='/assets/images/icon-increment-quantity.svg'
+							onClick={() => {
+								incrementProduct(product, cart, setCart);
+							}}
+						/>
 					</StyledAddMoreProducts>
 				</>
 			)}
 
-			<StyledProduct>{product}</StyledProduct>
-			<StyledDescriptionProduct>{descriptionProduct}</StyledDescriptionProduct>
-			<StyledPrice>${price.toFixed(2)}</StyledPrice>
+			<StyledProduct>{product.name}</StyledProduct>
+			<StyledDescriptionProduct>
+				{product.descriptionProduct}
+			</StyledDescriptionProduct>
+			<StyledPrice>€{product.price.toFixed(2)}</StyledPrice>
 		</StyledDivProduct>
 	);
 };
 
 export default ObjectProducts;
+
+// const ObjectProducts = ({
+// 	imgMobile,
+// 	imgTablet,
+// 	imgDesktop,
+// 	name,
+// 	descriptionProduct,
+// 	price,
+// 	addProducts
+// }) => {
+// 	const [active, setActive] = useState(false);
+
+// 	return (
+// 		<StyledDivProduct>
+// 			<picture>
+// 				<source media='(min-width: 1024px)' srcSet={imgDesktop} />
+// 				<source media='(min-width: 768px)' srcSet={imgTablet} />
+// 				<source media='(min-width: 360px)' srcSet={imgMobile} />
+// 				<StyledImg media={imgMobile} alt='' />
+// 			</picture>
+
+// 			{!active && (
+// 				<StyledAddToCart
+// 					onClick={() => {
+// 						setActive(!active);
+// 						setQuantity(1);
+// 					}}
+// 				>
+// 					Add to cart
+// 				</StyledAddToCart>
+// 			)}
+
+// 			{active && quantity > 0 && (
+// 				<>
+// 					<StyledAddMoreProducts>
+// 						<StyledImgDecrement
+// 							src='/assets/images/icon-decrement-quantity.svg'
+// 							onClick={decrementQuantity}
+// 						/>
+// 						{quantity}
+// 						<StyledImgIncrement
+// 							src='/assets/images/icon-increment-quantity.svg'
+// 							onClick={incrementQuantity}
+// 						/>
+// 					</StyledAddMoreProducts>
+// 				</>
+// 			)}
+
+// 			<StyledProduct>{name}</StyledProduct>
+// 			<StyledDescriptionProduct>{descriptionProduct}</StyledDescriptionProduct>
+// 			<StyledPrice>${price.toFixed(2)}</StyledPrice>
+// 		</StyledDivProduct>
+// 	);
+// };
+
+// export default ObjectProducts;

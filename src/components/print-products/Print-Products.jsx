@@ -1,7 +1,7 @@
 import ObjectProducts from '../object-product/Object-Products';
 import { StyledGrid } from './print-product.styles';
 
-const PrintProducts = ({ filterProducts }) => {
+const PrintProducts = ({ filterProducts, cart, setCart, removeProduct }) => {
 	// console.log(filterProducts);
 	return (
 		<StyledGrid>
@@ -9,12 +9,10 @@ const PrintProducts = ({ filterProducts }) => {
 				return (
 					<ObjectProducts
 						key={infoProduct.id}
-						imgMobile={infoProduct.images.mobile}
-						imgTablet={infoProduct.images.tablet}
-						imgDesktop={infoProduct.images.desktop}
-						product={infoProduct.product}
-						descriptionProduct={infoProduct.descriptionProduct}
-						price={infoProduct.price}
+						product={infoProduct}
+						cart={cart}
+						setCart={setCart}
+						removeProduct={removeProduct}
 					/>
 				);
 			})}
