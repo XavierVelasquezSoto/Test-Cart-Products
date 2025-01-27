@@ -31,6 +31,10 @@ const StyledAddToCart = styled.button`
 	bottom: 105px;
 	left: 108px;
 	cursor: pointer;
+
+	@media screen and (width>768px) {
+		left: 48px;
+	}
 `;
 
 const StyledImgDecrement = styled.img`
