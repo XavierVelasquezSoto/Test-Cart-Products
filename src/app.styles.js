@@ -76,6 +76,7 @@ const StyledCartProductRemove = styled.img`
 	border-radius: 100px;
 	height: 20px;
 	color: ${COLORS.brownLight};
+	cursor: pointer;
 `;
 
 ///

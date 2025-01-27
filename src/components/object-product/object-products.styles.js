@@ -8,7 +8,8 @@ const StyledDivProduct = styled.div`
 `;
 
 const StyledImg = styled.img`
-	border: 3px solid ${COLORS.red};
+	/* border: 3px solid ${COLORS.red}; */
+	border: ${props => (props.$active ? 'none' : `3px solid ${COLORS.red}`)};
 	border-radius: 20px;
 	width: 100%;
 	height: auto;
@@ -70,11 +71,12 @@ const StyledAddMoreProducts = styled.button`
 	font-size: ${FONTS.fontSizeS};
 	bottom: 105px;
 	left: 108px;
+
+	@media screen and (width>768px) {
+		left: 48px;
+	}
 `;
 
-const StyledPaddingProducts = styled.div`
-	padding-top: 38px;
-`;
 const StyledProduct = styled.p`
 	margin: 0;
 	color: ${COLORS.brownLight};

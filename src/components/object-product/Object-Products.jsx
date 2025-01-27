@@ -52,7 +52,7 @@ const ObjectProducts = ({ product, cart, setCart, removeProduct }) => {
 				<source media='(min-width: 1024px)' srcSet={product.images.desktop} />
 				<source media='(min-width: 768px)' srcSet={product.images.tablet} />
 				<source media='(min-width: 360px)' srcSet={product.images.mobile} />
-				<StyledImg src={product.images.mobile} alt='' />
+				<StyledImg $active={!findProduct} src={product.images.mobile} alt='' />
 			</picture>
 
 			{!findProduct && (
